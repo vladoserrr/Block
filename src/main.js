@@ -18,7 +18,7 @@ function createCoins() {
     coin.style.animationDuration = `${18 + (i % 7) * 4}s`;
     coin.style.animationDelay = `-${(i * 3) % 23}s`;
     coin.style.setProperty("--drift", `${(i % 2 ? 1 : -1) * (12 + (i % 5) * 8)}px`);
-    coin.style.opacity = String(0.08 + (i % 4) * 0.025);
+    coin.style.setProperty("--coin-opacity", String(0.08 + (i % 4) * 0.025));
     layer.appendChild(coin);
   }
 }
