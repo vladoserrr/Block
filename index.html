@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#080d12" />
+    <meta name="description" content="BLOCK — обмен ByteCoin" />
+    <title>BLOCK — ByteCoin</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <div class="coin-layer" id="coinLayer" aria-hidden="true"></div>
+      <main class="shell">
+        <header class="topbar">
+          <div class="brand-mark">B<span>C</span></div>
+          <div class="brand-copy"><div class="brand-name">BLOCK</div><div class="brand-caption">BYTECOIN EXCHANGE</div></div>
+          <div class="live-pill"><i></i> ONLINE</div>
+        </header>
+
+        <section class="hero">
+          <div class="eyebrow"><span></span> ОБМЕН BYTECOIN</div>
+          <h1>Твой обмен.<br><em>Твои правила.</em></h1>
+          <p>Покупай и продавай BC по фиксированному курсу.</p>
+        </section>
+
+        <section class="trade-actions" aria-label="Операции">
+          <button class="trade-button buy-button" id="buyBtn" type="button">
+            <span class="button-icon">↗</span>
+            <span class="button-text"><b>Купить BC</b><small>Получить ByteCoin</small></span>
+            <span class="button-arrow">→</span>
+          </button>
+          <button class="trade-button sell-button" id="sellBtn" type="button">
+            <span class="button-icon">↙</span>
+            <span class="button-text"><b>Продать BC</b><small>Обменять на рубли</small></span>
+            <span class="button-arrow">→</span>
+          </button>
+        </section>
+
+        <section class="panel rates-panel">
+          <div class="section-heading"><span>КУРСЫ ОБМЕНА</span><span class="heading-line"></span><span class="muted">BC / RUB</span></div>
+          <div class="rate-row">
+            <div class="rate-symbol buy-symbol">↗</div>
+            <div class="rate-copy"><b>Курс продажи</b><small>Покупка BC пользователем</small></div>
+            <div class="rate-value"><strong>10 ₽</strong><small>/ 1 000 000 BC</small></div>
+          </div>
+          <div class="rate-divider"></div>
+          <div class="rate-row">
+            <div class="rate-symbol sell-symbol">↙</div>
+            <div class="rate-copy"><b>Курс скупки</b><small>Продажа BC пользователем</small></div>
+            <div class="rate-value"><strong>6 ₽</strong><small>/ 1 000 000 BC</small></div>
+          </div>
+        </section>
+
+        <section class="stats-grid">
+          <div class="panel stat-card"><div class="stat-label">КУПЛЕНО</div><div class="stat-value" id="boughtStat">0 <small>BC</small></div><div class="stat-foot"><span class="stat-dot green"></span> Всего приобретено</div></div>
+          <div class="panel stat-card"><div class="stat-label">ПРОДАНО</div><div class="stat-value" id="soldStat">0 <small>BC</small></div><div class="stat-foot"><span class="stat-dot red"></span> Всего продано</div></div>
+        </section>
+
+        <section class="panel reserve-panel">
+          <div class="section-heading"><span>РЕЗЕРВЫ ОБМЕННИКА</span><span class="heading-line"></span><span class="reserve-lock">● LIVE</span></div>
+          <div class="reserve-row"><span><i class="ruble-icon">₽</i> Резерв рублей</span><b id="rubReserve">0 ₽</b></div>
+          <div class="reserve-row"><span><i class="bc-icon">BC</i> Резерв ByteCoin</span><b id="bcReserve">0 BC</b></div>
+          <div class="reserve-note">Данные резервов обновляются оператором обменника</div>
+        </section>
+
+        <footer><span class="footer-mark">BLOCK / BC</span><span>BYTECOIN EXCHANGE</span></footer>
+      </main>
+
+      <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+        <section class="trade-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+          <button class="modal-close" id="closeModal" aria-label="Закрыть" type="button">×</button>
+          <div class="modal-kicker" id="modalKicker">ПОКУПКА BYTECOIN</div>
+          <h2 id="modalTitle">Купить BC</h2>
+          <p class="modal-description" id="modalDescription">Укажи сумму в рублях — рассчитаем количество BC.</p>
+          <label class="amount-label" id="amountLabel" for="amountInput">СУММА В РУБЛЯХ</label>
+          <div class="amount-field"><input id="amountInput" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0.00" autocomplete="off" /><span id="amountUnit">₽</span></div>
+          <div class="estimate"><span>Предварительный расчёт</span><b id="estimateValue">0 BC</b></div>
+          <div class="modal-rate" id="modalRate">Курс: 10 ₽ за 1 000 000 BC</div>
+          <button class="confirm-button" id="confirmBtn" type="button">Продолжить <span>→</span></button>
+          <p class="demo-hint">Заявка пока не отправляется: подключение обработки обмена требует серверной части.</p>
+        </section>
+      </div>
+      <div class="toast" id="toast" role="status"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
